@@ -1,16 +1,30 @@
-using System.Threading.Tasks;
+using Application.Interfaces;
+using Application.Queries;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Web.Controllers
 {
-    [Microsoft.AspNetCore.Components.Route("[controller]")]
+    [ApiController]
     public class BalanceController : ControllerBase
     {
-        
-        [HttpGet]
-        public Task<ActionResult> Get()
+        private readonly IBalanceService _balanceService;
+
+        public BalanceController(IBalanceService balanceService)
         {
-            return Task.FromResult<ActionResult>(Ok("blockedIds"));
+            _balanceService = balanceService;
+        }
+
+        [HttpGet("balance")]
+        public ActionResult Get([FromQuery(Name = "account_id")] string accountId)
+        {
+            var balance = _balanceService.GetBalance(new GetBalance(accountId));
+
+            if (balance == null)
+            {
+                return NotFound(0);
+            }
+            
+            return Ok(balance);
         }
     }
 }

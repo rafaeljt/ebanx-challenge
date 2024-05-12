@@ -1,15 +1,30 @@
-using System.Threading.Tasks;
+using Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Web.ApiModels.Requests;
 
 namespace Web.Controllers
 {
-    [Microsoft.AspNetCore.Components.Route("[controller]")]
+    [ApiController]
     public class EventController : ControllerBase
     {
-        [HttpPost]
-        public Task<ActionResult> Get()
+        private readonly IEventService _eventService;
+
+        public EventController(IEventService eventService)
         {
-            return Task.FromResult<ActionResult>(Ok("blockedIds"));
+            _eventService = eventService;
+        }
+
+        [HttpPost("event")]
+        public ActionResult Post([FromBody] PostEventRequest eventRequest)
+        {
+            var processedEvent = _eventService.ProcessEvent(eventRequest);
+
+            if (processedEvent == null)
+            {
+                return NotFound(0);
+            }
+
+            return Created("", processedEvent);
         }
     }
 }

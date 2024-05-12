@@ -350,13 +350,6 @@ coverage-hits.txt
 # Visual Studio conf
 .vscode/
 
-# migration data
-src/Bari.Services.GatewayAuthorizer/Data
-
 # project support files
 *.bat
 *.sqlite
-
-# IaC
-.terraform
-.terraform.lock.hcl
