@@ -24,7 +24,7 @@ namespace Web.Controllers
                 return NotFound(0);
             }
             
-            return Ok(balance);
+            return Ok(balance.Value);
         }
     }
 }

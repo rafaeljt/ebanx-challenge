@@ -1,3 +1,4 @@
+using Application.Entities;
 using Application.Interfaces;
 using Application.Queries;
 using Microsoft.Extensions.Logging;
@@ -15,10 +16,13 @@ namespace Application.Services
             _accountService = accountService;
         }
 
-        public GetBalance GetBalance(GetBalance balance)
+        public Balance GetBalance(GetBalance balance)
         {
-            _logger.LogInformation("Getting balance");
-            return null;
+            _logger.LogInformation("Getting balance for {account}", balance.AccountId);
+            
+            var account = _accountService.GetAccount(balance.AccountId);
+
+            return account != null ? new Balance(account.Balance) : null;
         }
     }
 }

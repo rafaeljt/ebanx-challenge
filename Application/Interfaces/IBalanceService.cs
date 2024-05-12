@@ -1,9 +1,10 @@
+using Application.Entities;
 using Application.Queries;
 
 namespace Application.Interfaces
 {
     public interface IBalanceService
     {
-        public GetBalance GetBalance(GetBalance balance);
+        public Balance GetBalance(GetBalance balance);
     }
 }
