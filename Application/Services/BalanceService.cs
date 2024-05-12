@@ -7,10 +7,12 @@ namespace Application.Services
     public class BalanceService : IBalanceService
     {
         private readonly ILogger<BalanceService> _logger;
+        private readonly IAccountService _accountService;
 
-        public BalanceService(ILogger<BalanceService> logger)
+        public BalanceService(ILogger<BalanceService> logger, IAccountService accountService)
         {
             _logger = logger;
+            _accountService = accountService;
         }
 
         public GetBalance GetBalance(GetBalance balance)

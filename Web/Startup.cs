@@ -16,6 +16,9 @@ namespace Web
             services.AddTransient<IBalanceService, BalanceService>();
             services.AddTransient<IEventService, EventService>();
             services.AddTransient<IResetService, ResetService>();
+            
+            //in-mem persistence
+            services.AddSingleton<IAccountService, AccountService>();
         }
         
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
