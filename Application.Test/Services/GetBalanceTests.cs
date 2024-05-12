@@ -1,4 +1,3 @@
-using Application.Entities;
 using Application.Interfaces;
 using Application.Queries;
 using Application.Services;
@@ -7,7 +6,7 @@ using Microsoft.Extensions.Logging;
 using NSubstitute;
 using Xunit;
 
-namespace Application.Test.Queries
+namespace Application.Test.Services
 {
     public class GetBalanceTests
     {
