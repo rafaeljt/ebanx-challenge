@@ -2,20 +2,13 @@ namespace Web.ApiModels.Responses
 {
     public class PostEvent
     {
-        public Origin Origin { get; set; }
+        public Account Origin { get; set; }
 
-        public Destination Destination { get; set; }
-        
-    }
-    
-    public class Origin
-    {
-        public string Id { get; set; }
+        public Account Destination { get; set; }
 
-        public long Balance { get; set; }
     }
 
-    public class Destination
+    public class Account
     {
         public string Id { get; set; }
 

@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using Application.Interfaces;
 using Application.Services;
 using Microsoft.AspNetCore.Builder;
@@ -10,9 +11,14 @@ namespace Web
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddRouting(options => options.LowercaseUrls = true);
-            services.AddControllers();
-            
+            services.AddRouting()
+                .AddControllers()
+                .AddJsonOptions(options =>
+                {
+                    options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+                });
+                
+
             services.AddTransient<IBalanceService, BalanceService>();
             services.AddTransient<IEventService, EventService>();
             services.AddTransient<IResetService, ResetService>();

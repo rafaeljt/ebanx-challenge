@@ -87,7 +87,11 @@ namespace Application.Services
             
             if (destination == null)
             {
-                return null;
+                destination = new Account()
+                {
+                    Id = @event.Destination
+                };
+                _accountService.PutAccount(destination);
             }
 
             origin.Balance -= @event.Amount;
