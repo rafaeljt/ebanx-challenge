@@ -1,9 +1,11 @@
+using Domain.Entities;
+
 namespace Application.Entities
 {
     public class ProcessedEvent
     {
-        public Origin Origin { get; set; }
-        public Destination Destination { get; set; }
+        public Account Origin { get; set; }
+        public Account Destination { get; set; }
         
     }
 }

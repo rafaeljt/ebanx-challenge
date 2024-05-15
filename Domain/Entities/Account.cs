@@ -4,6 +4,6 @@ namespace Domain.Entities
     {
         public string Id { get; set; }
         
-        public long Balance { get; set; }
+        public decimal Balance { get; set; }
     }
 }

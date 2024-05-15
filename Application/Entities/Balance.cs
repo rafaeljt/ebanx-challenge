@@ -2,9 +2,9 @@ namespace Application.Entities
 {
     public class Balance
     {
-        public long Value { get; set; }
+        public decimal Value { get; set; }
 
-        public Balance(long value)
+        public Balance(decimal value)
         {
             Value = value;
         }
